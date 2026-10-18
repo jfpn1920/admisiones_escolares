@@ -22,9 +22,9 @@
             <p>Formulario básico para registrar un estudiante.</p>
         </div>
     </header>
-    <!---------------------------------------------------------->
-    <!--|estructuracion_contenedor_informacion_del_formulario|-->
-    <!---------------------------------------------------------->
+    <!----------------------------------------------->
+    <!--|estructuracion_informacion_del_formulario|-->
+    <!----------------------------------------------->
     <main class="contenedor">
         <section class="introduccion">
             <div class="icono_introduccion">
@@ -38,7 +38,7 @@
         <!---------------------->
         <!--|datos_personales|-->
         <!---------------------->
-        <form id="formularioInscripcion" class="formulario">
+        <form id="formularioInscripcion" class="formulario" novalidate>
             <div class="seccion_formulario">
                 <div class="titulo_seccion">
                     <i class="fa-solid fa-id-card"></i>
@@ -47,22 +47,19 @@
                 <div class="grupo_campos">
                     <div class="campo">
                         <label for="nombre">Nombre completo</label>
-                        <input type="text" id="nombre"
-                            placeholder="Ejemplo: Juan Pérez">
+                        <input type="text" id="nombre" placeholder="Ejemplo: Juan Pérez" maxlength="100" autocomplete="name" required>
                     </div>
                     <div class="campo">
                         <label for="documento">Documento</label>
-                        <input type="text" id="documento"
-                            placeholder="Número de documento">
+                        <input type="text" id="documento" placeholder="Número de documento" maxlength="30" required>
                     </div>
                     <div class="campo">
                         <label for="edad">Edad</label>
-                        <input type="number" id="edad"
-                            placeholder="Edad">
+                        <input type="number" id="edad" placeholder="Edad" min="1" max="120" step="1" required>
                     </div>
                     <div class="campo">
                         <label for="grado">Grado</label>
-                        <select id="grado">
+                        <select id="grado" required>
                             <option value="">Seleccionar grado</option>
                             <option value="6°">6°</option>
                             <option value="7°">7°</option>
@@ -85,18 +82,15 @@
                 <div class="grupo_campos">
                     <div class="campo">
                         <label for="correo">Correo electrónico</label>
-                        <input type="email" id="correo"
-                            placeholder="correo@ejemplo.com">
+                        <input type="email" id="correo" placeholder="correo@ejemplo.com" maxlength="150" autocomplete="email">
                     </div>
                     <div class="campo">
                         <label for="telefono">Teléfono</label>
-                        <input type="tel" id="telefono"
-                            placeholder="Número de teléfono">
+                        <input type="tel" id="telefono" placeholder="Número de teléfono" maxlength="30" autocomplete="tel">
                     </div>
                     <div class="campo campo_completo">
                         <label for="acudiente">Nombre del acudiente</label>
-                        <input type="text" id="acudiente"
-                            placeholder="Nombre del padre, madre o acudiente">
+                        <input type="text" id="acudiente" placeholder="Nombre del padre, madre o acudiente" maxlength="100">
                     </div>
                 </div>
             </div>
@@ -108,17 +102,23 @@
                     <i class="fa-solid fa-comment"></i>
                     <h3>Observaciones</h3>
                 </div>
-                <textarea id="observaciones"
-                    placeholder="Escribe alguna observación..."></textarea>
+                <label for="observaciones" class="etiqueta_observaciones">Observaciones adicionales</label>
+                <textarea id="observaciones" maxlength="1000" placeholder="Escribe alguna observación..."></textarea>
             </div>
             <!------------->
             <!--|botones|-->
             <!------------->
             <div class="botones">
-                <button type="button" id="guardar" class="boton guardar"><i class="fa-solid fa-floppy-disk"></i>Guardar inscripción</button>
-                <button type="button" id="limpiar" class="boton limpiar"><i class="fa-solid fa-eraser"></i>Limpiar</button>
+                <button type="button" id="guardar" class="boton guardar">
+                    <i class="fa-solid fa-floppy-disk"></i>
+                    Guardar inscripción
+                </button>
+                <button type="button" id="limpiar" class="boton limpiar">
+                    <i class="fa-solid fa-eraser"></i>
+                    Limpiar
+                </button>
             </div>
-            <p id="mensaje" class="mensaje"></p>
+            <p id="mensaje" class="mensaje" role="status" aria-live="polite"></p>
         </form>
         <!-------------------------->
         <!--|inscripcion_guardada|-->
@@ -128,11 +128,19 @@
                 <i class="fa-solid fa-folder-open"></i>
                 <h2>Inscripción guardada</h2>
             </div>
-            <div id="datosGuardados" class="datos_guardados">
+            <div id="datosGuardados" class="datos_guardados" aria-live="polite">
                 <p>No hay información guardada.</p>
             </div>
-            <button id="restaurar" class="boton restaurar"><i class="fa-solid fa-rotate-left"></i>Restaurar datos</button>
-            <button id="eliminar" class="boton eliminar"><i class="fa-solid fa-trash"></i>Eliminar inscripción</button>
+            <div class="botones botones_registro">
+                <button type="button" id="restaurar" class="boton restaurar">
+                    <i class="fa-solid fa-rotate-left"></i>
+                    Restaurar datos
+                </button>
+                <button type="button" id="eliminar" class="boton eliminar">
+                    <i class="fa-solid fa-trash"></i>
+                    Eliminar inscripción
+                </button>
+            </div>
         </section>
     </main>
 </body>
